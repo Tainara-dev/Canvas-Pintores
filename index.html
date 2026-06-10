@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ✏️ ALTERE: Título da página (aparece na aba do navegador) -->
+<title>Canvas — Adriana Varejão</title>
+<!-- Links das fontes e CSS - NÃO ALTERE -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     NAVBAR (MENU DO TOPO)
+     ✏️ OPCIONAL: Você pode mudar os nomes dos temas se quiser
+     ══════════════════════════════════════════════════════════════ -->
+<nav class="navbar">
+  <!-- Logotipo fixo - NÃO ALTERE -->
+  <div class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    CANVAS
+  </div>
+
+  <!-- Botões de tema - OPCIONAL editar os nomes -->
+  <div class="nav-themes">
+    <span class="theme-label">Tema</span>
+    <button class="tbtn active" onclick="mudarTema('', this)">Galeria</button>
+    <button class="tbtn" onclick="mudarTema('atelie', this)">Ateliê</button>
+    <button class="tbtn" onclick="mudarTema('museu', this)">Museu</button>
+    <button class="tbtn" onclick="mudarTema('impressionista', this)">Impressão</button>
+  </div>
+</nav>
+
+<div class="canvas-app">
+
+  <!-- ══════════════════════════════════════════════════════════════
+       IMAGEM DE CAPA DO PERFIL
+       ✏️ ALTERE AQUI: Substitua o placeholder pela imagem de capa
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="profile-cover">
+    <!-- 
+    🎯 SUBSTITUIR ESTE BLOCO COMPLETO POR:
+    <img src="URL_DA_IMAGEM" alt="Capa do perfil" class="profile-cover-art">
+    
+    Exemplo:
+    <img src="https://exemplo.com/imagem-capa.jpg" alt="Capa do perfil" class="profile-cover-art">
+    -->
+    <img src="capa.webp" alt="Capa da página">
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SEÇÃO DO PERFIL
+       ✏️ ALTERE: Foto, nome, localização, movimento, estatísticas, bio
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="profile-section">
+
+    <!-- FOTO E BOTÃO SEGUIR -->
+    <div class="profile-row">
+      <div class="profile-portrait" id="portrait-el">
+        <!-- 
+        🎯 SUBSTITUIR O EMOJI POR:
+        <img src="URL_DA_FOTO" alt="Retrato do pintor">
+        
+        Exemplo:
+        <img src="https://exemplo.com/foto-pintor.jpg" alt="Retrato do pintor">
+        -->
+        <img src="perfil.jpg" alt="Imagem de Perfil">
+      </div>
+      <!-- Botão seguir - NÃO ALTERE -->
+      <div class="profile-actions">
+        <button class="btn-seguir" onclick="toggleSeguir(this)">+ Seguir</button>
+      </div>
+    </div>
+
+    <!-- NOME E HANDLE DO PERFIL -->
+    <div class="profile-name-block">
+      <!-- ✏️ ALTERE: Nome completo do pintor -->
+      <div class="profile-full-name" id="nome-pintor">Adriana Varejão</div>
+      <!-- ✏️ ALTERE: @handle e anos de vida (nascimento – falecimento) -->
+      <div class="profile-handle">@varejao.a · 1964 – ainda viva</div>
+    </div>
+
+    <!-- LOCALIZAÇÃO E MOVIMENTO ARTÍSTICO -->
+    <div class="profile-meta-row">
+      <!-- ✏️ ALTERE: Cidade e país de origem -->
+      <div class="profile-meta-item">
+        <span class="meta-icon">📍</span>
+        <span>Rio de Janeiro, Brasil</span>
+      </div>
+      <!-- ✏️ ALTERE: Nome do movimento artístico -->
+      <div class="movement-badge">Arte Contemporânea</div>
+    </div>
+
+    <!-- ESTATÍSTICAS DO PERFIL -->
+    <div class="profile-stats-row">
+      <!-- ✏️ ALTERE: Número total de obras -->
+      <div class="pstat">
+        <span class="pstat-num" id="n-obras">5</span>
+        <span class="pstat-label">obras</span>
+      </div>
+      <!-- ✏️ ALTERE: Quantas décadas o artista esteve ativo -->
+      <div class="pstat">
+        <span class="pstat-num">6</span>
+        <span class="pstat-label">décadas ativa</span>
+      </div>
+      <!-- ✏️ ALTERE: Número fictício de admiradores/seguidores -->
+      <div class="pstat">
+        <span class="pstat-num">13M</span>
+        <span class="pstat-label">admiradores</span>
+      </div>
+    </div>
+
+    <!-- BIOGRAFIA CURTA -->
+    <!-- ✏️ ALTERE: Escreva 2-4 linhas sobre o artista -->
+    <p class="profile-bio-text">
+      Adriana Varejão é uma das artistas plásticas contemporâneas brasileiras mais prestigiadas internacionalmente. Sua obra explora criticamente a história colonial, a violência da escravidão e a miscigenação, usando a estética barroca e a pintura tridimensional para expor o "sangue e a carne" por trás dos monumentos.
+    </p>
+
+    <!-- CITAÇÃO FAMOSA -->
+    <!-- ✏️ ALTERE: Insira uma frase famosa do pintor ou sobre sua arte -->
+    <blockquote class="profile-bio-quote">
+      "Celacanto provoca maremoto."
+    </blockquote>
+
+    <!-- TAGS/HASHTAGS -->
+    <!-- ✏️ ALTERE: Substitua pelas palavras-chave relacionadas ao artista -->
+    <div class="profile-tags">
+      <span class="ptag">#ArteContemporanea</span>
+      <span class="ptag">#Contamporanea</span>
+      <span class="ptag">#ArtesPlasticas</span>
+      <span class="ptag">#Inhotim</span>
+      <span class="ptag">#ArtesBrasileiras</span>
+    </div>
+
+  </div>
+  <!-- fim profile-section -->
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BARRA DE ABAS
+       ✏️ OPCIONAL: Pode deixar como está
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="mudarAba('galeria', this)">Galeria</button>
+    <button class="tab-btn" onclick="mudarAba('sobre', this)">Sobre</button>
+    <button class="tab-btn" onclick="mudarAba('timeline', this)">Linha do Tempo</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ABA 1: GALERIA DE OBRAS
+       ✏️ ALTERE CADA OBRA: imagem, título, ano, técnica, descrição, local
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="content-section visible" id="sec-galeria">
+
+    <div class="gallery-header">
+      <span class="gallery-title">Obras em Destaque</span>
+      <!-- ✏️ ALTERE: Número total de obras mostradas -->
+      <span class="gallery-count">5 obras</span>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- ═══════════════════════════════════════════════════════
+           OBRA 1
+           ═══════════════════════════════════════════════════════ -->
+      <div class="obra-card">
+        <div class="obra-frame">
+          <!-- 
+          🎯 SUBSTITUIR ESTE BLOCO COMPLETO POR:
+          <img src="URL_DA_OBRA" alt="Título da Obra">
+          
+          Exemplo:
+          <img src="https://exemplo.com/obra1.jpg" alt="Título da Obra 1">
+          -->
+          <img src="obra1.jpg" alt="Obra 1">
+        </div>
+        <div class="obra-body">
+          <!-- ✏️ ALTERE: Título da obra -->
+          <div class="obra-titulo">Pele Tatuada à Moda de Azulejaria</div>
+          <!-- ✏️ ALTERE: Ano e local onde está exposta -->
+          <div class="obra-ano">1995 · MAM-BA</div>
+          <!-- ✏️ ALTERE: Técnica (ex: Óleo sobre tela) e dimensões (ex: 100x80cm) -->
+          <div class="obra-tecnica">Óleo sobre tela · 160 x 140 cm</div>
+          <!-- ✏️ ALTERE: Descrição da obra (contexto, significado, importância) -->
+          <div class="obra-desc">
+             A pintura funde a estética dos azulejos portugueses coloniais com texturas orgânicas, apresentando uma "pele" aberta ou ferida que revela o corpo humano por dentro.
+          </div>
+          <div class="obra-actions">
+            <!-- Botão de curtir - NÃO ALTERE -->
+            <button class="obra-btn" onclick="curtirObra(this)" title="Apreciar obra">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>Apreciar</span>
+            </button>
+            <!-- ✏️ ALTERE: Nome do museu ou local de exposição -->
+            <span class="obra-local">🏛️ MAM - BA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           OBRA 2
+           ═══════════════════════════════════════════════════════ -->
+      <div class="obra-card">
+        <div class="obra-frame">
+          <!-- 🎯 SUBSTITUIR POR: <img src="URL_DA_OBRA_2" alt="Título da Obra 2"> -->
+          <img src="obra2.jpg" alt="Imagem da obra 2">
+        </div>
+        <div class="obra-body">
+          <!-- ✏️ ALTERE todos os campos abaixo -->
+          <div class="obra-titulo">Ruína de Charque</div>
+          <div class="obra-ano">2001-2002 · FAMA Museu</div>
+          <div class="obra-tecnica">Óleo sobre madeira e poliuretano · 233 x 90 x 166 cm</div>
+          <div class="obra-desc">
+            Adriana Varejão em 2001. Esta peça faz parte de uma série que explora a materialidade da carne e a arquitetura colonial através de "esculturas-pinturas" de chão.
+          </div>
+          <div class="obra-actions">
+            <button class="obra-btn" onclick="curtirObra(this)" title="Apreciar obra">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>Apreciar</span>
+            </button>
+            <span class="obra-local">🏛️ FAMA Museu, Itu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           OBRA 3
+           ═══════════════════════════════════════════════════════ -->
+      <div class="obra-card">
+        <div class="obra-frame">
+          <!-- 🎯 SUBSTITUIR POR: <img src="URL_DA_OBRA_3" alt="Título da Obra 3"> -->
+          <img src="obra3.jpg" alt="Imagem da obra 3">
+        </div>
+        <div class="obra-body">
+          <!-- ✏️ ALTERE todos os campos abaixo -->
+          <div class="obra-titulo">Entrance Figure II</div>
+          <div class="obra-ano">1998 · Rio de Janeiro</div>
+          <div class="obra-tecnica"> Óleo sobre tela · 200 x 200 cm</div>
+          <div class="obra-desc">
+            Adriana Varejão. Esta peça faz parte da série "Proposta para uma catequese" e é um dos exemplos mais emblemáticos da investigação da artista sobre a história colonial, a identidade brasileira e o barroco.
+          </div>
+          <div class="obra-actions">
+            <button class="obra-btn" onclick="curtirObra(this)" title="Apreciar obra">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>Apreciar</span>
+            </button>
+            <span class="obra-local">🏛️ Instituto Inhotim</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           OBRA 4
+           ═══════════════════════════════════════════════════════ -->
+      <div class="obra-card">
+        <div class="obra-frame">
+          <!-- 🎯 SUBSTITUIR POR: <img src="URL_DA_OBRA_4" alt="Título da Obra 4"> -->
+          <div class="obra-frame-placeholder">
+            <div class="frame-placeholder-icon">🖼️</div>
+            <div class="frame-placeholder-text">Imagem da Obra 4<br>Substitua por &lt;img src="..."&gt;</div>
+          </div>
+        </div>
+        <div class="obra-body">
+          <!-- ✏️ ALTERE todos os campos abaixo -->
+          <div class="obra-titulo">Título da Obra 4</div>
+          <div class="obra-ano">Ano · Local</div>
+          <div class="obra-tecnica">Técnica · Dimensões</div>
+          <div class="obra-desc">
+            Descreva os elementos visuais, as influências, o contexto da criação
+            e o impacto cultural desta obra.
+          </div>
+          <div class="obra-actions">
+            <button class="obra-btn" onclick="curtirObra(this)" title="Apreciar obra">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>Apreciar</span>
+            </button>
+            <span class="obra-local">🏛️ Museu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════
+           OBRA 5
+           ═══════════════════════════════════════════════════════ -->
+      <div class="obra-card">
+        <div class="obra-frame">
+          <!-- 🎯 SUBSTITUIR POR: <img src="URL_DA_OBRA_5" alt="Título da Obra 5"> -->
+          <div class="obra-frame-placeholder">
+            <div class="frame-placeholder-icon">🖼️</div>
+            <div class="frame-placeholder-text">Imagem da Obra 5<br>Substitua por &lt;img src="..."&gt;</div>
+          </div>
+        </div>
+        <div class="obra-body">
+          <!-- ✏️ ALTERE todos os campos abaixo -->
+          <div class="obra-titulo">Título da Obra 5</div>
+          <div class="obra-ano">Ano · Local</div>
+          <div class="obra-tecnica">Técnica · Dimensões</div>
+          <div class="obra-desc">
+            Por que esta obra é importante? Qual é o legado que ela deixou para a história da arte
+            e para o país onde o pintor viveu?
+          </div>
+          <div class="obra-actions">
+            <button class="obra-btn" onclick="curtirObra(this)" title="Apreciar obra">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>Apreciar</span>
+            </button>
+            <span class="obra-local">🏛️ Museu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADICIONAR MAIS OBRAS: 
+           📋 Copie todo o bloco <div class="obra-card">...</div> acima e cole aqui
+           para adicionar quantas obras quiser -->
+      <div class="obra-card add-card">
+        <div class="add-card-icon">＋</div>
+        <div class="add-card-text">Adicione mais obras copiando um card acima</div>
+      </div>
+
+    </div>
+    <!-- fim gallery-grid -->
+
+  </div>
+  <!-- fim sec-galeria -->
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ABA 2: SOBRE O PINTOR
+       ✏️ ALTERE: Biografia completa, ficha técnica e contexto histórico
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="content-section" id="sec-sobre">
+    <div class="sobre-section">-
+
+      <!-- BIOGRAFIA COMPLETA -->
+      <div class="sobre-bloco">
+        <div class="sobre-bloco-titulo">Biografia</div>
+        <div class="sobre-bloco-texto">
+          <!-- ✏️ ALTERE: Escreva 5-8 linhas contando a história completa do artista -->
+          Escreva aqui uma biografia completa do pintor. Fale sobre sua infância, sua formação artística,
+          as influências que recebeu, as dificuldades que enfrentou e como conquistou reconhecimento.
+          Explique o impacto que deixou na arte e na cultura do seu país.
+          <br><br>
+          Continue com mais detalhes sobre as diferentes fases de sua carreira, viagens que fez,
+          outros artistas com quem conviveu e eventos históricos que influenciaram sua obra.
+        </div>
+      </div>
+
+      <!-- FICHA DO ARTISTA -->
+      <div class="sobre-bloco">
+        <div class="sobre-bloco-titulo">Ficha do Artista</div>
+
+        <!-- ✏️ ALTERE cada linha abaixo com os dados reais do pintor -->
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Nome completo</span>
+          <span class="sobre-valor">Nome Completo do Pintor</span>
+        </div>
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Nascimento</span>
+          <span class="sobre-valor">Dia de mês de Ano · Cidade, País</span>
+        </div>
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Falecimento</span>
+          <span class="sobre-valor">Dia de mês de Ano · Cidade, País</span>
+        </div>
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Movimento</span>
+          <span class="sobre-valor">Nome do Movimento Artístico</span>
+        </div>
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Técnicas</span>
+          <span class="sobre-valor">Óleo, aquarela, gravura... (liste as técnicas usadas)</span>
+        </div>
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Museus</span>
+          <span class="sobre-valor">Museus que guardam suas obras</span>
+        </div>
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Influências</span>
+          <span class="sobre-valor">Artistas que influenciaram este pintor</span>
+        </div>
+        
+        <div class="sobre-linha">
+          <span class="sobre-chave">Influenciou</span>
+          <span class="sobre-valor">Artistas que este pintor influenciou</span>
+        </div>
+      </div>
+
+      <!-- CONTEXTO HISTÓRICO -->
+      <div class="sobre-bloco">
+        <div class="sobre-bloco-titulo">Contexto Histórico</div>
+        <div class="sobre-bloco-texto">
+          <!-- ✏️ ALTERE: Explique o período histórico e sua relação com a arte do pintor -->
+          Descreva o contexto histórico do período em que o pintor viveu e produziu suas obras.
+          Que fatos históricos, movimentos sociais ou transformações culturais marcaram sua época?
+          Como tudo isso se reflete na arte que ele criou?
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- fim sec-sobre -->
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ABA 3: LINHA DO TEMPO
+       ✏️ ALTERE: Cada evento com ano, título e descrição
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="content-section" id="sec-timeline">
+    <div class="timeline-section">
+
+      <div class="timeline">
+
+        <!-- ═══════════════════════════════════════════════════════
+             EVENTO 1: NASCIMENTO
+             ═══════════════════════════════════════════════════════ -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <!-- ✏️ ALTERE: Ano de nascimento -->
+          <div class="tl-ano">18XX</div>
+          <!-- ✏️ ALTERE: Título do evento -->
+          <div class="tl-evento">Nascimento</div>
+          <!-- ✏️ ALTERE: Descrição detalhada do evento -->
+          <div class="tl-descricao">
+            Descreva aqui o nascimento do pintor: cidade, família, contexto social.
+            A família era pobre, rica? Havia outros artistas na família?
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             EVENTO 2: FORMAÇÃO ARTÍSTICA
+             ═══════════════════════════════════════════════════════ -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <!-- ✏️ ALTERE: Ano do início da formação -->
+          <div class="tl-ano">18XX</div>
+          <!-- ✏️ ALTERE: Título do evento -->
+          <div class="tl-evento">Início da Formação Artística</div>
+          <!-- ✏️ ALTERE: Descrição do evento -->
+          <div class="tl-descricao">
+            Onde e como o pintor aprendeu a pintar? Teve professores? Frequentou escolas de arte?
+            Viajou para aprender novas técnicas?
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             EVENTO 3: OBRA MAIS FAMOSA
+             ═══════════════════════════════════════════════════════ -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <!-- ✏️ ALTERE: Ano da criação da obra -->
+          <div class="tl-ano">19XX</div>
+          <!-- ✏️ ALTERE: Título do evento -->
+          <div class="tl-evento">Criação da Obra Mais Famosa</div>
+          <!-- ✏️ ALTERE: Descrição do evento -->
+          <div class="tl-descricao">
+            Em que contexto surgiu a obra mais importante do pintor?
+            O que o inspirou? Como foi recebida na época?
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             EVENTO 4: RECONHECIMENTO
+             ═══════════════════════════════════════════════════════ -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <!-- ✏️ ALTERE: Ano do reconhecimento -->
+          <div class="tl-ano">19XX</div>
+          <!-- ✏️ ALTERE: Título do evento -->
+          <div class="tl-evento">Reconhecimento / Prêmio</div>
+          <!-- ✏️ ALTERE: Descrição do evento -->
+          <div class="tl-descricao">
+            Houve um momento de reconhecimento importante na carreira do pintor?
+            Uma exposição, um prêmio, uma viagem que mudou tudo?
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════
+             EVENTO 5: FALECIMENTO
+             ═══════════════════════════════════════════════════════ -->
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <!-- ✏️ ALTERE: Ano do falecimento -->
+          <div class="tl-ano">19XX</div>
+          <!-- ✏️ ALTERE: Título do evento -->
+          <div class="tl-evento">Falecimento e Legado</div>
+          <!-- ✏️ ALTERE: Descrição do legado -->
+          <div class="tl-descricao">
+            Como o pintor faleceu? Que legado deixou? Suas obras estão em quais museus hoje?
+            Como ele influenciou a arte que veio depois dele?
+          </div>
+        </div>
+
+        <!-- ADICIONAR MAIS EVENTOS:
+             📋 Copie todo o bloco <div class="tl-item">...</div> acima e cole aqui
+             para adicionar mais momentos importantes da vida do artista -->
+
+      </div>
+    </div>
+  </div>
+  <!-- fim sec-timeline -->
+
+  <!-- ══════════════════════════════════════════════════════════════
+       RODAPÉ
+       ✏️ OPCIONAL: Pode editar o texto do projeto
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="canvas-footer">
+    <div class="footer-logo">CANVAS</div>
+    <div class="footer-line"></div>
+    <div class="footer-text">
+      <!-- ✏️ OPCIONAL: Edite as informações do projeto -->
+      <strong>Arte para todos · Literatura e Arte</strong><br>
+      Projeto da Turma · 2º Ano do Ensino Médio<br>
+      <span style="opacity: 0.5; font-size: 10px;">✏️ Edite o arquivo HTML para personalizar este perfil</span>
+    </div>
+  </div>
+
+</div><!-- fim canvas-app -->
+
+<!-- Link para o JavaScript - NÃO ALTERE -->
+<script src="script.js"></script>
+</body>
+</html>
